@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 
-RUN apt-get update
+RUN apt-get update && apt install vim
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
