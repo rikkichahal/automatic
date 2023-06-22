@@ -22,5 +22,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t rikkichahal/practice:latest .
-          docker push rikkichahal/practice:latest
+          docker build -t rikkichahal/practice:${{ github.sha }} .
+          docker push rikkichahal/practice:${{ github.sha }}
