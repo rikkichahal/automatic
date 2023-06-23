@@ -8,6 +8,9 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  DIGITALOCEAN_SSH_PRIVATE_KEY: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+  DIGITALOCEAN_HOST: 159.65.149.237
+  
 
 jobs:
   build-and-push:
@@ -34,8 +37,13 @@ jobs:
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
           docker push rikkichahal/practice:${IMAGE_TAG}
           
-      - name: Deploy to ${TARGET_ENVIRONMENT}
-        run: | 
-          kubectl apply -f deployment.yaml
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.DIGITALOCEAN_HOST }}
+          username: root
+          key: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+          script: |
+            kubectl apply -f deployment.yaml
 
 
