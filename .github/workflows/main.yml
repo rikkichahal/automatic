@@ -41,7 +41,7 @@ jobs:
           DIGITALOCEAN_SSH_PRIVATE_KEY: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ env.DIGITALOCEAN_HOST }}
+          host: 159.65.149.237
           username: root
           key: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
