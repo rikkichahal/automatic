@@ -33,3 +33,18 @@ jobs:
           IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
           docker push rikkichahal/practice:${IMAGE_TAG}
+          
+      - name: Deploy to ${TARGET_ENVIRONMENT}
+        run: | 
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: my-pod
+          spec:
+            containers:
+            - name: my-container
+              image: rikkichahal/practice:${IMAGE_TAG}
+              ports:
+               - containerPort: 8080
+
+
