@@ -36,15 +36,6 @@ jobs:
           
       - name: Deploy to ${TARGET_ENVIRONMENT}
         run: | 
-          apiVersion: v1
-          kind: Pod
-          metadata:
-            name: my-pod
-          spec:
-            containers:
-            - name: my-container
-              image: rikkichahal/practice:${IMAGE_TAG}
-              ports:
-               - containerPort: 8080
+          kubectl apply -f deployment.yaml
 
 
