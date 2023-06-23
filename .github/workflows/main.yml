@@ -8,7 +8,6 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-  DIGITALOCEAN_SSH_PRIVATE_KEY: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
   DIGITALOCEAN_HOST: 159.65.149.237
   
 
@@ -38,6 +37,8 @@ jobs:
           docker push rikkichahal/practice:${IMAGE_TAG}
           
       - name: Deploy to DigitalOcean
+        env:
+          DIGITALOCEAN_SSH_PRIVATE_KEY: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ env.DIGITALOCEAN_HOST }}
