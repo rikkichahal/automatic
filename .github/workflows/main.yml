@@ -50,7 +50,7 @@ jobs:
             envsubst < /root/automatic/deployment.yaml
             cat /root/automatic/deployment.yaml
             git pull 
-            kubectl apply -f /root/automatic/pod.yaml
+            kubectl apply -f /root/automatic/deployment.yaml
 
 
 
