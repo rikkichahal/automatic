@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: my-container
-      image: rikkichahal/practice
+      image: ubuntu/apache2
       imagePullPolicy: Always
       ports:
         - containerPort: 80
