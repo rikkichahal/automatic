@@ -44,7 +44,7 @@ jobs:
           host: 159.65.149.237
           
           username: root
-          key: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+          password: ${{ env.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
             kubectl apply -f deployment.yaml
 
