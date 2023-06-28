@@ -46,7 +46,8 @@ jobs:
             IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
             pwd
             ls
-            sed -i "s/{{IMAGE_TAG}}/$IMAGE_TAG/g" /root/automatic/deployment.yaml
+            export IMAGE_TAG
+            envsubst < /root/automatic/deployment.yaml
             cat /root/automatic/deployment.yaml
             kubectl apply -f /root/automatic/deployment.yaml 
 
