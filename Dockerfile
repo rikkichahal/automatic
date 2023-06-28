@@ -1,4 +1,4 @@
 FROM nginx
-RUN apt-get update 
-WORKDIR /app
+
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
