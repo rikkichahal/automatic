@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: my-container
-      image: rikkichahal/practice:${{ steps.extract-number.outputs.tag | int }}
+      image: rikkichahal/practice:${{ steps.extract-number.outputs.tag }}
       #imagePullPolicy: Always
       ports:
         - containerPort: 80
