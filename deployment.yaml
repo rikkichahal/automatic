@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: my-container
-      image: rikkichahal/practice:${IMAGE_TAG}
+      image: rikkichahal/practice:5398445510
       ports:
         - containerPort: 8080
