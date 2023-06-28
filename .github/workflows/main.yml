@@ -45,10 +45,10 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           #port: ${{ secrets.SSH_PORT}}
-          source: '.'
+          #source: '.'
           #target: ${{ secrets.PATH }}
           script: |
-            kubectl apply -f deployment.yaml
+            kubectl apply -f /root/automatic/deployment.yaml
 
 
 
