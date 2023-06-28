@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: my-container
-      image: rikkichahal/practice:${IMAGE_TAG}
+      image: rikkichahal/practice:latest
       imagePullPolicy: Always
       ports:
         - containerPort: 80
