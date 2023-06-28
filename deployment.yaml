@@ -6,6 +6,6 @@ spec:
   containers:
     - name: my-container
       image: rikkichahal/practice:latest
-      imagePullPolicy: Always
+      #imagePullPolicy: Always
       ports:
         - containerPort: 80
