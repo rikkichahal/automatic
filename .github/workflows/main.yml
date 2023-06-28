@@ -37,18 +37,13 @@ jobs:
           docker push rikkichahal/practice:${IMAGE_TAG}
           
       - name: Deploy to DigitalOcean
-        #env:
-          #DIGITALOCEAN_SSH_PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         uses: appleboy/ssh-action@master
         with:
           host: 159.65.149.237
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
-          #port: ${{ secrets.SSH_PORT}}
-          #source: '.'
-          #target: ${{ secrets.PATH }}
           script: |
-            kubectl apply -f /root/automatic/deployment.yaml
+            kubectl apply -f /root/automatic/deployment.yaml --set=IMAGE_TAG=latest
 
 
 
