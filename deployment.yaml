@@ -5,6 +5,7 @@ metadata:
 spec:
   containers:
     - name: my-container
-      image: rikkichahal/practice:5398445510
+      image: rikkichahal/practice
+      imagePullPolicy: Always
       ports:
-        - containerPort: 8080
+        - containerPort: 80
