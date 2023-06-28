@@ -8,6 +8,8 @@ on:
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  
+  
 
 jobs:
   build-and-push:
@@ -15,7 +17,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get last number from URL
         id: extract-number
@@ -25,7 +27,7 @@ jobs:
           echo "::set-output name=tag::$TAG"
           
       - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ env.DOCKER_HUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
 
       - name: Build and push Docker image
@@ -34,8 +36,15 @@ jobs:
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
           docker push rikkichahal/practice:${IMAGE_TAG}
           
-      - name: Deploy to ${TARGET_ENVIRONMENT}
-        run: | 
-          kubectl apply -f deployment.yaml
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: 159.65.149.237
+          username: root
+          key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+          script: |
+            kubectl apply -f /root/automatic/deployment.yaml 
+
+
 
 
