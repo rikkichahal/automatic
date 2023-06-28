@@ -43,6 +43,7 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
+            IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
             kubectl apply -f /root/automatic/deployment.yaml 
 
 
