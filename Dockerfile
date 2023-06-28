@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
-RUN apt-get update 
+FROM nginx
+
 WORKDIR /app
-EXPOSE 8080
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
