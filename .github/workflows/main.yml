@@ -44,6 +44,8 @@ jobs:
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
             IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
+            pwd
+            ls
             sed -i "s/{{IMAGE_TAG}}/$IMAGE_TAG/g" /root/automatic/deployment.yaml
             kubectl apply -f /root/automatic/deployment.yaml 
 
