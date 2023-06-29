@@ -43,7 +43,7 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
-            git pull deployment.yaml
+            git pull rikkichahal/automatic/deployment.yaml
             IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
             pwd
             ls
