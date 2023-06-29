@@ -38,7 +38,7 @@ jobs:
       - name: Copy single file to remote
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: automatic/deployment.yaml
+          local: deployment.yaml
           remote: /root/deployment.yaml
           host: 159.65.149.237
           username: root
