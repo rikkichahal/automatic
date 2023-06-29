@@ -34,8 +34,11 @@ jobs:
           IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
           docker push rikkichahal/practice:${IMAGE_TAG}
-          export IMAGE_TAG
-          envsubst < /root/automatic/deployment.yaml
+          
+      - name: Env substitute
+        run: |
+           export IMAGE_TAG
+           envsubst < /root/automatic/deployment.yaml
           
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@master
