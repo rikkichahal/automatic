@@ -29,8 +29,10 @@ jobs:
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
-
+      - name: Copy deployment file to workspace
+        run: cp deployment.yaml $GITHUB_WORKSPACE/deployment.yaml
       - name: Build and push Docker image
+      
         run: |
           IMAGE_TAG=${{ steps.extract-number.outputs.tag }}
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
@@ -49,7 +51,7 @@ jobs:
             export IMAGE_TAG
             envsubst < /root/automatic/deployment.yaml
             cat /root/automatic/deployment.yaml
-            git clone https://github.com/rikkichahal/automatic.git
+            
             kubectl apply -f /root/automatic/deployment.yaml
 
 
