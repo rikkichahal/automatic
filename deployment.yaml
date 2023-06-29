@@ -16,7 +16,7 @@ spec:
         - name: container
           image: rikkichahal/practice:$IMAGE_TAG
           ports:
-            - containerPort: 8080
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
