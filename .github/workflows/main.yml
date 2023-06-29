@@ -42,7 +42,7 @@ jobs:
           remote: /root/deployment.yaml
           host: 159.65.149.237
           username: root
-          password: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+          password: ${{ secrets.PASSWORD }}
           
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@master
