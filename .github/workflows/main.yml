@@ -56,9 +56,9 @@ jobs:
             pwd
             ls
             export IMAGE_TAG
-            envsubst < /root/automatic/deployment.yaml > pod.yaml
-            cat /root/automatic/pod.yaml
-            kubectl apply -f /root/automatic/pod.yaml
+            envsubst < /root/deployment.yaml > pod.yaml
+            cat /root/pod.yaml
+            kubectl apply -f /root/pod.yaml
 
 
 
