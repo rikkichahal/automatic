@@ -35,6 +35,14 @@ jobs:
           docker build -t rikkichahal/practice:${IMAGE_TAG} .
           docker push rikkichahal/practice:${IMAGE_TAG}
                     
+      - name: Copy single file to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: automatic/deployment.yaml
+          remote: scp/single/deployment.yaml
+          host: 159.65.149.237
+          username: root
+          password: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@master
@@ -48,9 +56,9 @@ jobs:
             pwd
             ls
             export IMAGE_TAG
-            envsubst < /root/automatic/deployment.yaml
-            cat /root/automatic/deployment.yaml
-            kubectl apply -f /root/automatic/deployment.yaml
+            envsubst < /root/automatic/deployment.yaml > pod.yaml
+            cat /root/automatic/pod.yaml
+            kubectl apply -f /root/automatic/pod.yaml
 
 
 
