@@ -39,7 +39,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: automatic/deployment.yaml
-          remote: scp/single/deployment.yaml
+          remote: /root/automatic/deployment.yaml
           host: 159.65.149.237
           username: root
           password: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
