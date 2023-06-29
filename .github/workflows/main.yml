@@ -49,7 +49,7 @@ jobs:
             
             export IMAGE_TAG
             envsubst < /root/automatic/deployment.yaml
-            
+            git pull deployment.yaml
             cat /root/automatic/deployment.yaml
         
             kubectl apply -f /root/automatic/deployment.yaml
